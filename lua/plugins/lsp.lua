@@ -18,7 +18,17 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({})
-			lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({
+				settings = {
+					python = {
+						analysis = {
+							extraPaths = {
+								"/opt/homebrew/lib/python3.9/site-packages",
+							},
+						},
+					},
+				},
+			})
 			lspconfig.jdtls.setup({})
 			lspconfig.tsserver.setup({})
 			lspconfig.tailwindcss.setup({})

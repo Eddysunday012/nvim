@@ -1,5 +1,8 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+local harpoon = require("harpoon")
+
+harpoon:setup()
 
 vim.keymap.set({ "n", "v" }, "<leader>]", ":Gen<CR>")
 vim.keymap.set("n", "-", function()
@@ -45,3 +48,24 @@ vim.keymap.set("n", "<leader>e", function()
 		reveal_force_cwd = true, -- change cwd without asking if needed
 	})
 end, { desc = "Open neo-tree at current file or working directory" })
+
+vim.keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end, { desc = "Add buffer to harpoon" })
+
+vim.keymap.set("n", "<leader>h", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Open harpoon menu" })
+
+vim.keymap.set("n", "<leader>1", function()
+	harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<leader>2", function()
+	harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<leader>3", function()
+	harpoon:list():select(3)
+end)
+vim.keymap.set("n", "<leader>4", function()
+	harpoon:list():select(4)
+end)
